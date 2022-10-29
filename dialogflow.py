@@ -1,7 +1,7 @@
 from google.cloud import dialogflow
 
 
-def detect_intent_texts(texts, project_id='verbgamebot', session_id='123456789', language_code='ru-RU'):
+def detect_intent_texts(texts, session_id, project_id='verbgamebot', language_code='ru-RU'):
     session_client = dialogflow.SessionsClient()
     session = session_client.session_path(project_id, session_id)
     for text in texts:
