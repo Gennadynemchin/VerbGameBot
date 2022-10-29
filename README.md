@@ -1,10 +1,12 @@
 # VerbGameBot
 
-
-echo "# VerbGameBot" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M master
-git remote add origin git@github.com:Gennadynemchin/VerbGameBot.git
-git push -u origin master
+for auth
+install gloud cli
+run gcloud auth application-default login
+if there any errors please see a suggestions
+probably you need to add quota for your project
+gcloud auth application-default set-quota-project <your_project_name>
+copy .json to your python project directory
+open .env and copy path to the .json like this:
+GOOGLE_APPLICATION_CREDENTIALS=verbgamebot_credentials.json
+GOOGLE_CLOUD_PROJECT=verbgamebot
