@@ -26,7 +26,7 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    text = update.message.text.split()
+    text = update.message.text
     user_id = update.message.from_user.id
     if text:
         await update.message.reply_text(detect_intent_texts(text, user_id))
