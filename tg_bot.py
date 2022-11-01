@@ -24,7 +24,8 @@ async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     text = update.message.text
     user_id = update.message.from_user.id
     if text:
-        await update.message.reply_text(detect_intent_texts(text, user_id))
+        answer, _ = detect_intent_texts(text, user_id)
+        await update.message.reply_text(answer)
 
 
 def main():

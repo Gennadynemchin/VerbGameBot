@@ -40,8 +40,9 @@ def main():
     def vk_loop():
         for event in longpoll.listen():
             if event.type == VkEventType.MESSAGE_NEW and event.to_me:
-                answer = detect_intent_texts(event.message, event.user_id)
-                echo(event, vk, answer)
+                answer, no_answer = detect_intent_texts(event.message, event.user_id)
+                if not no_answer:
+                    echo(event, vk, answer)
 
     vk_loop()
 
