@@ -14,7 +14,7 @@ def vk_bot(token):
                 print('Message from: ', event.user_id)
             else:
                 print('My message for: ', event.user_id)
-            print('Text:', event.text)
+            print(f'Text: {event.text}\n')
 
 
 load_dotenv()
