@@ -8,6 +8,8 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-ENTRYPOINT [ "python" ]
+RUN chmod a+x run.sh
 
-CMD ["tg_bot.py",  "vk_bot.py"]
+ENTRYPOINT [ "bash" ]
+
+CMD ["./run.sh"]
