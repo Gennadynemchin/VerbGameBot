@@ -25,19 +25,14 @@ def create_intent(project_id, display_name, training_phrases_parts, message_text
     print(f'Intent created: {response}')
 
 
-def get_questions_answers(file):
-    with open(file, 'r') as questions:
+def main():
+    with open('questions.json', 'r') as questions:
         questions_json = json.loads(questions.read())
         for intent_name, questions_answers in questions_json.items():
-            # display_name = intent_name
+            display_name = intent_name
             training_phrases_parts = questions_answers['questions']
             message_text = [questions_answers['answer']]
-
-            create_intent('verbgamebot', intent_name, training_phrases_parts, message_text)
-
-
-def main():
-    get_questions_answers('questions.json')
+            create_intent('verbgamebot', display_name, training_phrases_parts, message_text)
 
 
 if __name__ == '__main__':

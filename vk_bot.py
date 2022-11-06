@@ -7,7 +7,10 @@ from vk_api.longpoll import VkLongPoll, VkEventType
 from dialogflow import detect_intent_texts
 
 
-def echo(event, vk_api, answer):
+logger = logging.getLogger(__name__)
+
+
+def answer_vk(event, vk_api, answer):
     vk_api.messages.send(
         user_id=event.user_id,
         message=answer,
@@ -16,7 +19,9 @@ def echo(event, vk_api, answer):
 
 
 def main():
-    logger = logging.getLogger(__name__)
+    logging.basicConfig(
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.DEBUG
+    )
     load_dotenv()
     vk_token = os.getenv('VK_TOKEN')
 
@@ -28,7 +33,7 @@ def main():
         if event.type == VkEventType.MESSAGE_NEW and event.to_me:
             answer, no_answer = detect_intent_texts(event.message, event.user_id)
             if not no_answer:
-                echo(event, vk, answer)
+                answer_vk(event, vk, answer)
 
 
 if __name__ == '__main__':
