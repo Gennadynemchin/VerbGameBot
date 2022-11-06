@@ -16,10 +16,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(f"Hi {user.name}!")
 
 
-async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text("Help!")
-
-
 async def hello(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     text = update.message.text
     user_id = update.message.from_user.id
@@ -35,7 +31,6 @@ def main():
 
     application = Application.builder().token(tg_token).build()
     application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("help", help_command))
     application.add_handler(MessageHandler(filters.TEXT, hello))
     application.run_polling()
 
